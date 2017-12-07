@@ -1,2 +1,2 @@
 # woocommerce
-# woocommerce useful codes created by RahulPpatidar
+woocommerce useful codes created by RahulPpatidar
