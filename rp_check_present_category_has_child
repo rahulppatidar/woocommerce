@@ -1,0 +1,34 @@
+/*********To chack present category has child category *********/
+/* Either pass category id or just use it on archive or category page */
+function rp_has_child($cat_id = null){
+	if (is_tax('product_cat')) {	
+			if($cat_id!=null){
+				if (empty($cat_id)){
+            		$term_id = get_queried_object_id();
+				}else{
+					$term_id=$cat_id;
+				}				
+				$children = get_terms(  'product_cat', array(
+				'parent'    => $term_id,
+				'hide_empty' => false
+				) );
+				if($children) {
+				   return true;
+				}else{
+					return false;
+				}
+			}else{
+				$term= get_queried_object();
+				$children = get_terms( $term->taxonomy, array(
+				'parent'    => $term->term_id,
+				'hide_empty' => false
+				) );
+				if($children) {
+				   return true;
+				}else{
+					return false;
+				}
+			}
+	}
+		return false;
+}
